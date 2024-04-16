@@ -1,0 +1,113 @@
+import java.util.Scanner;
+
+public class p1 {
+    public static void main(String[] args) {
+        Scanner scam = new Scanner(System.in);
+        int show, op, ing, meia, meiav=0, ingp = 0, valor = 0;
+        String opb, loc;
+        System.out.println("Escolha o Show");
+        System.out.println("1");
+        System.out.println("2");
+        System.out.println("3");
+        System.out.println("4");
+        System.out.println("5");
+        show = scam.nextInt();
+        scam.nextLine();
+        if (show > 5 || show < 0) {
+            System.out.println("opção invalida");
+            return;
+        }
+        System.out.println("escolha a Localidade");
+        System.out.println("Pista vip( R$ 50,00)");
+        System.out.println("Pista (R$ 40,00)");
+        System.out.println("camarote (R$ 100,00)");
+        loc = scam.nextLine();
+
+        switch (loc.toLowerCase()) {
+            case "pista vip":
+                System.out.println("Insira a quantidade de ingressos");
+                ing = scam.nextInt();
+                if (ing > 6 || ing < 0) {
+                    System.out.println("quantidade invalida");
+                    return;
+                }
+                valor = 50;
+                ingp = ing * valor;
+                break;
+            case "pista":
+                System.out.println("Insira a quantidade de ingressos");
+                ing = scam.nextInt();
+                if (ing > 6 || ing < 0) {
+                    System.out.println("quantidade invalida");
+                    return;
+                }
+                valor = 40;
+                ingp = ing * valor;
+                break;
+            case "camarote":
+                System.out.println("Insira a quantidade de ingressos");
+                ing = scam.nextInt();
+                if (ing > 6 || ing < 0) {
+                    System.out.println("quantidade invalida");
+                    return;
+                }
+                valor = 100;
+                ingp = ing * valor;
+                break;
+
+            default:
+                System.out.println("opção Invalida");
+                System.exit(0);
+                break;
+
+        }
+        System.out.println("quantos ingressos são meia-entrada");
+        meia = scam.nextInt();
+        switch (meia) {
+            case 1:
+                meiav = valor == 50 ? valor / 2 : valor;
+                meiav = valor == 40 ? valor / 2 : valor;
+                meiav = valor == 100 ? valor / 2 : valor;
+
+                break;
+            case 2:
+                valor *= 2;
+                meiav = valor == 100 ? valor / 2 : valor;
+                meiav = valor == 80 ? valor / 2 : valor;
+                meiav = valor == 200 ? valor / 2 : valor;
+                break;
+            case 3:
+                valor *= 3;
+                meiav = valor == 150 ? valor / 2 : valor;
+                meiav = valor == 120 ? valor / 2 : valor;
+                meiav = valor == 300 ? valor / 2 : valor;
+                break;
+            default:
+                System.out.println("opção Invalida");
+                System.exit(0);
+                break;
+        }
+
+        ingp += meiav;
+
+        System.out.println("Escolha 1 para open bar (Acréscimo de 100% no valor)");
+        System.out.println("Escolha 2 caso não queira open bar");
+        op = scam.nextInt();
+        if (op > 2 || op < 0) {
+            System.out.println("Opção invalida");
+            return;
+        }
+        if (op == 1) {
+            opb = "Sim";
+            ingp *= 2;
+        } else {
+            opb = "Não";
+        }
+
+        System.out.println("Show " + show);
+        System.out.println("Localização: " + loc);
+        System.out.println("Adquiriu Open Bar? " + opb);
+        System.out.println("total a pagar: " + ingp);
+    }
+
+}
